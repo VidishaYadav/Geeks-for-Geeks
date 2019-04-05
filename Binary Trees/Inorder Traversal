@@ -1,0 +1,12 @@
+class GfG
+{
+    void inOrder(Node root)
+    {
+       // Your code goes here
+       if(root == null)
+       return;
+       inOrder(root.left);
+       System.out.print(root.data+" ");
+       inOrder(root.right);
+    }
+}
