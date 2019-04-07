@@ -1,0 +1,28 @@
+
+/*Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function is mentioned above.*/
+
+/*Complete function below
+Node is as follows:
+class Node{
+    int data;
+    Node left,right;
+    Node(int d){
+        data=d;
+        left=right=null;
+    }
+}
+*/
+class GfG{
+    public int sumBT(Node root){
+      // add code here.
+      if(root == null)
+      return 0;
+      
+      int leftsum = sumBT(root.left);
+      int rightsum =sumBT(root.right);
+      return root.data + leftsum + rightsum;
+      
+   }
+}
