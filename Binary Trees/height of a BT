@@ -1,0 +1,37 @@
+
+/*Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function is mentioned above.*/
+
+/* A Binary Tree node
+class Node
+{
+    int data;
+    Node left, right;
+    Node(int item)
+    {
+        data = item;
+        left = right = null;
+    }
+} */
+class GfG
+{
+    int height(Node node) 
+    {
+         if(node == null)
+         return 0;
+         
+         return Height(node,0);
+    } 
+    
+    int Height(Node root, int h)
+    {
+        if(root == null)
+        return h;
+      
+    int h1 = Height(root.left,h+1);
+    int h2 = Height(root.right,h+1);
+    return Math.max(h1,h2);
+      
+    } 
+}
