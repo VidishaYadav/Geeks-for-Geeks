@@ -1,0 +1,24 @@
+class GfG
+{   
+    void printNearNodes(Node node, int k1, int k2)
+    {
+        // Your code here
+        ArrayList<Integer> arr=new ArrayList<>();
+        printNearNode(node,k1,k2,arr);
+        Collections.sort(arr);
+        for(int i =0;i<arr.size();i++)
+        {
+            System.out.print(arr.get(i)+" ");
+        }
+    }
+        
+        ArrayList<Integer> printNearNode(Node node,int k1,int k2,ArrayList<Integer> arr){       
+        if(node == null)
+        return arr;
+        else if((node.key >= k1) && (node.key <= k2))
+        arr.add(node.key);
+        printNearNode(node.left,k1,k2,arr);
+        printNearNode(node.right,k1,k2,arr);
+        return arr;
+    }    
+}
