@@ -1,0 +1,52 @@
+class GfG
+{
+    public static int preIndex;
+    GfG(int ind)
+    {
+        preIndex = ind;
+    }
+    
+  public static Node buildTree(int ino[], int pre[], int st, int end)
+    {
+       // add your code here
+  return bt(ino,pre,st,end,st,end);
+    }
+    
+    static Node bt(int ino[],int pre[],int preS,int preE,int inoS,int inoE )
+    {
+        if(inoS > inoE)
+        return null;
+        
+        int rootindex=-1;
+        Node root = new Node(pre[preS]);
+        
+        for(int i =inoS;i<=inoE;i++)
+        {
+            if(ino[i] == root.data )
+            {
+                rootindex=i;
+                break;
+            }
+        }
+        if(rootindex == -1)
+        return null;
+        
+
+        
+        int leftInS = inoS;
+        int leftInE = rootindex-1;
+        int leftPreS = preS+1;
+        int leftPreE = leftInE - leftInS + leftPreS;
+        int rightInS = rootindex+1;
+        int rightInE = inoE;
+        int rightPreS = leftPreE+1;
+        int rightPreE = preE;
+        
+            root.left=bt(ino, pre,leftPreS, leftPreE, leftInS,leftInE);
+ 
+            root.right=bt(ino, pre, rightPreS,rightPreE,rightInS,rightInE);
+        return root;
+    }
+    
+}
+  
