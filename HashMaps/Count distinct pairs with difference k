@@ -1,0 +1,52 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc=new Scanner(System.in);
+		int n = sc.nextInt();
+		for(int i=0;i<n;i++)
+		{
+		    int s=sc.nextInt();
+		    int arr[] = new int[s];
+		    HashMap<Integer,Integer> seen = new HashMap<>();
+		    for(int j=0;j<s;j++)
+		    {
+		        arr[j]=sc.nextInt();
+		        if(!seen.containsKey(arr[j]))
+		        seen.put(arr[j],1);
+		        else
+		        seen.put(arr[j],seen.get(arr[j])+1);
+		    }
+		     int k = sc.nextInt();
+		    int max=0;
+		   for(int j=0;j<s;j++)
+		   {
+		       if(!seen.containsKey(arr[j]))
+		       continue;
+		        else if((seen.get(arr[j])) <= 1)
+		         seen.remove(arr[j]);
+		        else
+		         seen.put(arr[j],seen.get(arr[j])-1);
+		         
+		        if(seen.containsKey(arr[j]+k))
+		        {
+		         max++;
+		         seen.put(arr[j]+k,seen.get(arr[j]+k)-1);
+		         }
+		         
+		         else if(seen.containsKey(arr[j]-k))
+		         {
+		         max++;
+		         seen.put(arr[j]-k,seen.get(arr[j]-k)-1);
+		         }
+		         
+		   }
+		    System.out.println(max);
+		}
+	}
+}
