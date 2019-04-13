@@ -1,0 +1,43 @@
+class GfG
+{
+	// Complete the function
+        Node buildTree(int in[], int post[], int n)
+	{
+           // Your code here
+           return bt(in,0,n-1,post,0,n-1);
+	}
+	
+	Node bt(int in[],int ins,int ine,int post[],int posts,int poste)
+	{
+	    if(ins >ine)
+	    return null;
+	    
+	    int rootdata=post[poste];
+	    Node newnode = new Node(rootdata);
+	    int rootnode=-1;
+	    for(int i=0;i<=ine;i++)
+	    {
+	        if(in[i] == rootdata)
+	        {
+	          rootnode = i;
+	          break;
+	        }
+	    }
+	    if(rootnode == -1)
+	    return null;
+	    
+	    int leftins=ins;
+	    int leftine=rootnode-1;
+	    int rightins=rootnode+1;
+	    int rightine=ine;
+	    int leftposts=posts;
+	    int leftposte=leftine-leftins+leftposts;
+	    int rightposts=leftposte+1;
+	    int rightposte=poste-1;
+	    
+	    newnode.left=bt(in,leftins,leftine,post,leftposts,leftposte);
+	    newnode.right=bt(in,rightins,rightine,post,rightposts,rightposte);
+	    
+	    return newnode;
+	}
+}
