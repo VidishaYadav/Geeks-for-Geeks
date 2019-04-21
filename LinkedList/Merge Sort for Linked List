@@ -1,0 +1,51 @@
+//User function Template for Java
+/*class Node
+{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data = data;
+        next = null;
+    }
+}*/
+class GfG
+{
+    
+    public static Node mergeList(Node a, Node b)
+    {
+        // your code here
+        Node result = null;
+        if(a == null)
+        return b;
+        if(b == null)
+        return a;
+        if(a.data >= b.data)
+        {
+            result = b;
+            result.next = mergeList(a,b.next); 
+        }
+        else
+        {
+            result =a;
+            result.next = mergeList(a.next,b);
+            
+        }
+        return result;
+    }
+    
+    public static Node splitList(Node source)
+    {
+        // our code here
+         if((source == null) || (source.next == null))
+        return source;
+        Node fast = source;
+        Node slow= source;
+        while((fast.next != null) && (fast.next.next != null))
+        {
+            fast=fast.next.next;
+            slow=slow.next;
+        }
+         return slow;
+    }
+}
