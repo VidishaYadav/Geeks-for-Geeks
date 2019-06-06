@@ -1,0 +1,42 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    for(int a=0;a<n1;a++)
+	    {
+	        int n=sc.nextInt();
+	        int d = sc.nextInt();
+	        int num[]=new int[n];
+	        for(int i=0;i<n;i++)
+	            num[i]=sc.nextInt();
+            int fine[] = new int[n];
+            int sum = 0 ;
+            for(int i=0;i<n;i++)
+                fine[i] = sc.nextInt();
+	        if(d%2 == 0)
+	        {
+	            for(int i=0;i<n;i++)
+	            {
+	                if(num[i]%2 != 0)
+	                sum=sum+fine[i];
+	            }
+	        }
+	        else
+	        {
+	           for(int i=0;i<n;i++)
+	            {
+	                if(num[i]%2 == 0)
+	                sum=sum+fine[i];
+	            } 
+	        }
+	        System.out.println(sum);
+	    }
+	}
+}
