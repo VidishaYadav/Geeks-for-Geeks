@@ -1,0 +1,55 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    for(int a=0;a<n1;a++)
+	    {
+	        int n=sc.nextInt();
+	        if(n == 0)
+	        {
+	        System.out.println("-1");
+	        break;
+	            
+	        }
+	        int arr[]=new int[n];
+	     
+	        for(int i=0;i<n;i++)
+	            arr[i]=sc.nextInt();
+	       
+	        int maj=arr[0];
+	        int count =1;
+	        for(int i=1;i<n;i++)
+	        {
+	            if(arr[i] == maj)
+	            count++;
+	       
+	            else
+	            {
+	               count--;
+	               if(count == 0)
+	               {
+	               maj=arr[i];
+	               count=1;
+	               }
+	            }
+	        }
+	        int ans=0;
+             for(int i=0;i<n;i++)
+	        {
+	            if(arr[i] == maj)
+	            ans++;
+	        }
+	 if(ans > n/2)
+	 System.out.println(maj);
+	 else
+	 System.out.println("-1");
+	    }
+	}
+}
