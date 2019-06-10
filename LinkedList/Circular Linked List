@@ -1,0 +1,25 @@
+class GfG
+{
+    boolean isCircular(Node head)
+    {
+	// Your code here
+	if(head == null)
+	return true;
+	Node temp = head;
+	int flag =0;
+	while(true)
+	{
+	    if(temp.next == null)
+	    break;
+	    if(temp.next == head)
+	    {
+	        flag = 1;
+	        break;
+	    }
+	    temp=temp.next;
+	}
+	    if(flag == 1)
+	    return true;
+	    return false;
+    }
+}
