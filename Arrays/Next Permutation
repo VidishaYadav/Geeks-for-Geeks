@@ -1,0 +1,52 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    for(int a=0;a<n1;a++)
+	    {
+	        int n=sc.nextInt();
+	        int num[]=new int[n];
+	        for(int i=0;i<n;i++)
+	            num[i]=sc.nextInt();
+	            int i,temp=0;
+	            for(i=n-1;i>=0;i--)
+	            {
+	                if(num[i] > num[i-1])
+	                {
+	                    temp=1;
+	                    i--;
+	                    break;
+	                }
+	            }
+	            if(i == 0 && temp ==0)
+	                Arrays.sort(num);
+	            else
+	            {
+	               int j=i+1;
+	               int kvalue= Integer.MAX_VALUE;
+	               int k=0;
+	                while(j <= n-1)
+	                {
+	                  if(num[j]>num[i] && num[j] < kvalue)
+	                  {
+	                  kvalue=num[j];
+	                  k=j;
+	                  }
+	                  j++;
+	                }
+	                    temp = num[i];
+	                    num[i]=num[k];
+	                    num[k]=temp;
+	               Arrays.sort(num, i+1, n);
+	            }
+	            for(i=0;i<num.length;i++)
+	            System.out.print(num[i]+" ");
+	            System.out.println();
+	    }
+	}
+}
