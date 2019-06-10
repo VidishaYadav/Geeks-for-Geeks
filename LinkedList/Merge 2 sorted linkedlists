@@ -1,0 +1,55 @@
+class GfG
+{
+   
+ Node mergeResult(Node headA, Node headB)
+    {
+        //Both lists empty condition
+	    if(headA == null && headB == null)
+            return null;
+        //List A is empty
+        if(headA == null)
+            return headB;
+        //List B is empty
+        if(headB == null)
+            return headA;
+        //Pointer variables for traversing the lists
+        Node tempA = headA, tempB = headB;
+        //Pointer variables for the final reversed merged list
+        Node tempC = null, prev = null;
+        //Merging procedure - Additionally, we keep track of previous node to merge in
+        //reverse fashion.
+        while(tempA != null && tempB != null)
+        {
+            if(tempA.data < tempB.data)
+            {
+                tempC = tempA;
+                tempA = tempA.next;
+            }
+            else
+            {
+                tempC = tempB;
+                tempB = tempB.next;
+            }
+            tempC.next = prev;
+            prev = tempC;
+        }
+        //When List B has been traversed completely
+        while(tempA != null)
+        {
+            tempC = tempA;
+            tempA = tempA.next;
+            tempC.next = prev;
+            prev = tempC;
+        }
+        //When List A has been traversed completely
+        while(tempB != null)
+        {
+            tempC = tempB;
+            tempB = tempB.next;
+            tempC.next = prev;
+            prev = tempC;
+        }
+        //tempC will be pointing at the head of the final reversed list
+        return tempC;
+    }
+}
