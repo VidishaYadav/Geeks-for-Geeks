@@ -1,0 +1,55 @@
+/*This is a function problem.You only need to complete the function given below*/
+//User function Template for Java
+/*
+class Node
+{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data = data;
+        next = null;
+    }
+}
+*/
+class LinkedList
+{
+    static Node segregate(Node head)
+    {
+        // add your code here
+        Node temp=head;
+        Node temp2 =head;
+        int count1=0;
+        int count2=0;
+        int count3=0;
+        while(temp != null )
+        {
+            if(temp.data == 0)
+            count1++;
+            if(temp.data == 1)
+            count2++;
+            if(temp.data == 2)
+            count3++;
+            temp=temp.next;
+        }
+        while(count1 != 0)
+        {
+            temp2.data=0;
+            count1--;
+            temp2=temp2.next;
+        }
+        while(count2 != 0)
+        {
+            temp2.data=1;
+            count2--;
+            temp2=temp2.next;
+        }
+        while(count3 != 0)
+        {
+            temp2.data=2;
+            count3--;
+            temp2=temp2.next;
+        }
+        return head;
+    }
+}
