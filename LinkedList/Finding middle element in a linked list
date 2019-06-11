@@ -1,0 +1,29 @@
+/*This is a function problem.You only need to complete the function given below*/
+/* Node of a linked list
+ class Node {
+   int data;
+    Node next;
+    Node(int d)  { data = d;  next = null; }
+}
+ Linked List class
+class LinkedList
+{
+    Node head;  // head of list
+}
+This is method only submission.  You only need to complete the method. */
+class GFG
+{
+    // Function to find middle element a linked list
+    int getMiddle(Node head)
+   {
+         // Your code here.
+         Node slow= head;
+         Node fast = head;
+         while(fast != null && fast.next != null)
+         {
+             slow=slow.next;
+             fast=fast.next.next;
+         }
+         return slow.data;
+   }
+}
