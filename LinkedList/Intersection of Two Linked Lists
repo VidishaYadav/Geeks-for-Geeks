@@ -1,0 +1,71 @@
+//User function Template for Java
+/*class Node
+{
+    int data;
+    Node next;
+    Node(int data)
+    {
+        this.data = data;
+        this.next = null;
+    }
+}*/
+class GFG
+{
+    static Node findIntersection(Node head1, Node head2)
+    {
+        // add your code here
+    HashSet<Integer> hset = new HashSet<Integer>();
+    HashSet<Integer> check = new HashSet<>();
+    Node n1 = head1; 
+    Node n2 = head2; 
+    Node head = null;
+	Node tail = null;
+    while(n1 != null) 
+    { 
+        if(!hset.contains(n1.data))
+        {
+            hset.add(n1.data);
+            
+        }
+        n1 = n1.next; 
+    } 
+	 while(n2 != null) 
+    { 
+        if(hset.contains(n2.data) && !check.contains(n2.data) )
+        {
+            Node newnode = new Node(n2.data);
+            if(head==null && tail == null)
+	        {
+	            head=tail=newnode;
+	        }
+	        else
+	        {
+	           tail.next = newnode;
+	           tail=tail.next;
+	        }
+	        check.add(n2.data);
+	    }
+        n2 = n2.next; 
+    }     
+    Node v1= head;
+    Node v2= head;
+    LinkedList<Integer> ll = new LinkedList<>();
+    while(v1 != null)
+    {
+        ll.add(v1.data);
+        v1=v1.next;
+    }
+	
+	  Collections.sort(ll);
+	  while(v2 != null)
+	  {
+	      int d =ll.remove();
+	      v2.data = d;
+	      v2=v2.next;
+	  }
+	  return head;
+	}
+	
+
+
+}
