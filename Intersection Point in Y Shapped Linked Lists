@@ -1,0 +1,59 @@
+/* Node of a linked list
+ class Node {
+   int data;
+    Node next;
+    Node(int d)  { data = d;  next = null; }
+}
+ Linked List class
+class LinkedList
+{
+    Node head;  // head of list
+}
+This is method only submission.  You only need to complete the method. */
+class Intersect
+{
+	int intersectPoint(Node headA, Node headB)
+	{
+         // code here
+         if(headA == null || headB == null)
+         return -1;
+         
+         Node tempA = headA;
+         Node tempB = headB;
+         int c1=0;
+         int c2=0;
+         while(tempA != null)
+         {
+             tempA=tempA.next;
+             c1++;
+         }
+         while(tempB != null)
+         {
+             tempB=tempB.next;
+             c2++;
+         }
+         int d =Math.max(c1-c2,c2-c1);
+         if(c1 > c2)
+         {
+             for(int i=0;i<d;i++)
+             {
+                 headA=headA.next;
+             }
+         }
+         else if(c2 > c1)
+         {
+            for(int i=0;i<d;i++)
+             {
+                 headB=headB.next;
+             } 
+         }
+         while(headA != null && headB != null)
+         {
+             if(headA.data == headB.data)
+             return headA.data;
+             headA=headA.next;
+             headB=headB.next;
+         }
+         return -1;
+	}
+}
