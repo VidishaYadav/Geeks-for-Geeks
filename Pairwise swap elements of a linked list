@@ -1,0 +1,38 @@
+/*node class of the linked list
+class Node
+{
+    int data;
+    Node next;
+    Node(int key)
+    {
+        data = key;
+        next = null;
+    }
+}
+*/
+class GfG
+{
+    public static Node reverse(Node head, int k)
+    {
+        //Your code here
+       Node current = head; 
+       Node next = null; 
+       Node prev = null; 
+         
+       int count = 0; 
+  
+       while (count < k && current != null)  
+       { 
+           next = current.next; 
+           current.next = prev; 
+           prev = current; 
+           current = next; 
+           count++; 
+       } 
+        
+        if (next != null)  
+          head.next = reverse(next, k);
+          
+          return prev;
+    }
+}
