@@ -1,0 +1,56 @@
+/*Complete the function below
+Node is as follows:
+class Node{
+	int data;
+	Node next;
+	Node(int d){
+		data=d;
+		next=null;
+	}
+}*/
+class GfG
+{
+	public static void insert(Node head,int value,int n)
+         {
+            //add code here.
+            if(head == null)
+            {
+                Node newnode= new Node(value);
+                head=newnode;
+                head.next=head;
+                return;
+            }
+            Node temp = head;
+            if(value < temp.data)
+            {
+                Node newnode=new Node(value);
+                newnode.next=head;
+                while(temp.next != head)
+                {
+                    temp=temp.next;
+                }
+                temp.next=newnode;
+                head=newnode;
+                return;
+            }
+            while(value >= temp.next.data)
+            {
+                temp=temp.next;
+            }
+        
+                Node newnode = new Node(value);
+                newnode.next = temp.next;
+                temp.next = newnode;
+                
+                Node temp2=head;
+                System.out.print(temp2.data+" ");
+                temp2=temp2.next;
+                while(temp2 != head)
+                {
+                    System.out.print(temp2.data+" ");
+                    temp2=temp2.next;
+                }
+                
+            
+}
+         }
