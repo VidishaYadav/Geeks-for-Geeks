@@ -1,0 +1,59 @@
+/*This is a function problem.You only need to complete the function given below*/
+/* Following is the Linked list node structure */
+/*class Node
+{
+    int data;
+    Node next;
+    Node(int d) {data = d; next = null; }
+}*/
+	
+class gfg
+{
+    Node reorderlist(Node head)
+    {
+        // Your code here
+        if( head == null)
+        return head;
+        if(head.next == null || head.next.next == null)
+        return head;
+        
+        Node temp1 = head;
+        Node slow = head;
+        Node fast = head;
+        while(fast.next != null && fast.next.next != null)
+        {
+            slow=slow.next;
+            fast = fast.next.next;
+            
+        }
+        Node ans = slow.next;
+        slow.next = null;
+        Node temp2 = reverse(ans);
+        while(temp1 != null && temp2 != null)
+        {
+            Node n = temp2.next ;
+            temp2.next = temp1.next;
+            temp1.next = temp2;
+            temp1=temp1.next.next;
+            temp2=n;
+            }
+        if(temp2 != null)
+        temp1.next = temp2;
+        
+        return head;
+        
+    }
+    Node reverse(Node head1)
+    {
+        if(head1 == null || head1.next == null)
+        {
+            return head1;
+        }
+        
+        Node h = reverse(head1.next);
+        head1.next.next = head1;
+        head1.next = null;
+        return h;
+    }
+    
+}
