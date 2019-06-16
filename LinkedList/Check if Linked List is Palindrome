@@ -1,0 +1,54 @@
+/* Structure of class Node is
+class Node
+{
+	int data;
+	Node next;
+	
+	Node(int d)
+	{
+		data = d;
+		next = null;
+	}
+}*/
+class Palindrome
+{
+    // Function to check if linked list is palindrome
+    boolean isPalindrome(Node head) 
+    {
+       
+        if(head == null || head.next == null)
+        return true;
+        
+        Node slow = head;
+        Node fast = head;
+       
+        while(fast.next != null && fast.next.next != null)
+        {
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        Node ans = slow.next;
+        slow.next = null;
+        Node head1 = reverse(ans);
+        while(head1 != null)
+        {
+            if(head1.data != head.data)
+            return false;
+            head = head.next;
+            head1 = head1.next;
+        }
+        return true;
+    }    
+    
+    Node reverse(Node head1)
+    {
+        if(head1  == null || head1.next == null)
+        return head1;
+        
+        Node temp = reverse(head1.next);
+        head1.next.next = head1;
+        head1.next = null;
+        
+        return temp;
+    }
+}
