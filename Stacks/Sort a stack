@@ -1,0 +1,29 @@
+class GfG{
+	public Stack<Integer> sort(Stack<Integer> s)
+	{
+	    if(s.isEmpty())
+	    return s;
+		
+		if(!s.isEmpty())
+		{
+		    int temp = s.pop();
+		    sort(s);
+		    sortstack(s,temp);
+		}
+	     return s;
+	}
+	
+	public void sortstack(Stack<Integer> s,int x)
+	{
+	    if(s.isEmpty() || s.peek() <= x)
+	    {
+	        s.push(x);
+	    }
+	    else
+	    {
+	      int temp = s.pop();
+	       sortstack(s,x);
+	     s.push(temp);
+	    }
+	}
+}
