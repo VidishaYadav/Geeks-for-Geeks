@@ -1,0 +1,46 @@
+/*This is a function problem.You only need to complete the function given below*/
+/* A Binary Tree node
+class Node
+{
+    int data;
+    Node left, right;
+    Node(int item)
+    {
+        data = item;
+        left = right = null;
+    }
+} */
+class Tree
+{
+    // /* Function to get the maximum width of a binary tree*/
+    int getMaxWidth(Node root)
+    {
+        // Your code here
+        if(root == null)
+        return 0;
+        if(root.left == null && root.right == null)
+        {
+            return 1;
+        }
+        
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        int maxwidth=0;
+        while(!q.isEmpty())
+        {
+            int count = q.size();
+            if(count > maxwidth)
+            maxwidth = count;
+            while(count != 0)
+            {
+               Node temp = q.remove();
+                if(temp.left != null)
+                    q.add(temp.left);
+                if(temp.right != null)
+                    q.add(temp.right);
+                    count--;
+            }
+        }
+        return maxwidth;
+    }		
+}
