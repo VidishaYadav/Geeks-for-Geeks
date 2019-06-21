@@ -1,0 +1,48 @@
+/*This is a function problem.You only need to complete the function given below*/
+/* A Binary Tree node
+class Node
+{
+    int data;
+    Node left, right;
+   Node(int item)    {
+        data = item;
+        left = right = null;
+    }
+} */
+class Pair<T,V>
+{
+    T h;
+    V d;
+    
+}
+class Tree
+{
+   /* Complete the function to get diameter of a binary tree */
+    int diameter(Node node)
+    {
+        // Your code here
+       Pair<Integer,Integer> ans = new Pair<>();
+       ans= helper(node,1);
+        int a=ans.d;
+        return a;
+        
+    }
+    
+    Pair<Integer,Integer> helper(Node root,int height)
+    {
+        Pair<Integer,Integer> ans = new Pair<>();
+        if(root == null)
+        {
+            ans.d = 0;
+            ans.h = 0;
+            return ans;
+        }
+        Pair<Integer,Integer> leftans = helper(root.left,height+1);
+        Pair<Integer,Integer> rightans = helper(root.right,height+1);         
+        
+        ans.h= Math.max(leftans.h,rightans.h);
+        ans.h = ans.h+1;
+        ans.d =Math.max(1+leftans.h + rightans.h,Math.max(leftans.d ,rightans.d));
+        return ans;
+    }
+}
