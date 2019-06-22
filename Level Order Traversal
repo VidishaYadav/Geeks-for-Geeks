@@ -1,0 +1,38 @@
+class Node
+{
+    int data;
+    Node left, right;
+    Node(int item)
+    {
+        data = item;
+        left = right = null;
+    }
+}
+*/
+class Level_order_traversal
+{
+    //You are required to complete this method
+    static void levelOrder(Node node) 
+    {
+        // Your code here
+        if(node == null)
+        return;
+        Queue<Node> q = new LinkedList<>();
+        q.add(node);
+        int count = 0;
+        while(!q.isEmpty())
+        {
+            count = q.size();
+            Node temp = q.remove();
+            System.out.print(temp.data+" ");
+            while(count != 0)
+            {
+                if(temp.left != null)
+                q.add(temp.left);
+                if(temp.right != null)
+                q.add(temp.right);
+                count--;
+            }
+        }
+    }
+}
