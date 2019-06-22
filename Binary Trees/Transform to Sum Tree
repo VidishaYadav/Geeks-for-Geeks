@@ -1,0 +1,31 @@
+/*This is a function problem.You only need to complete the function given below*/
+/*Complete the Given Function
+Node is as follows:
+class Tree{
+int data;
+Tree left,right;
+Tree(int d){
+	data=d;
+	left=null;
+	right=null;
+}
+}*/
+class GfG{
+    public void toSumTree(Tree root){
+         //add code here.
+         if(root == null)
+         return;
+         
+         if(root.left == null && root.right == null)
+         {
+             root.data = 0;
+             return;
+         }
+         int x=root.left.data;
+         int y=root.right.data;
+          toSumTree(root.left);
+          toSumTree(root.right);
+        
+         root.data = x + y + root.left.data + root.right.data;
+    }
+}
