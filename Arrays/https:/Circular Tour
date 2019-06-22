@@ -1,0 +1,25 @@
+class GfG
+{
+    int tour(int petrol[], int distance[])
+    {
+	// Your code here
+	int start = 0;
+	int tank = 0;
+	int total = 0;
+	for(int i=0;i<petrol.length;i++)
+	{
+	if((tank=tank+petrol[i]-distance[i])<0) 
+	{
+	    start=i+1;
+	    total+=tank;
+	    tank=0;
+	    
+	}
+	}
+        if(total+tank<0)
+        return -1;
+        return start;
+	
+	
+    }
+}
