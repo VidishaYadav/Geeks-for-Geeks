@@ -1,0 +1,41 @@
+/*This is a function problem.You only need to complete the function given below*/
+/* A Binary Tree node
+class Node
+{
+    int data;
+    Node left, right;
+    Node(int item)
+    {
+        data = item;
+        left = right = null;
+    }
+}
+*/
+class GfG
+{
+	void reversePrint(Node node) 
+        {
+            // your code here
+            if(node == null)
+            return;
+            
+            Queue<Node> q = new LinkedList<>();
+            Stack<Node> s = new Stack<>();
+            q.add(node);
+            while(!q.isEmpty())
+            {
+                Node temp = q.remove();
+                s.push(temp);
+                if(temp.right != null)
+                q.add(temp.right);
+                if(temp.left != null)
+                q.add(temp.left);
+            }
+            while(!s.isEmpty())
+            {
+                System.out.print((s.pop()).data+" ");
+            }
+            
+        }
+}      
+       
