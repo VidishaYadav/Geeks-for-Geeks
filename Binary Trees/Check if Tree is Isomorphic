@@ -1,0 +1,44 @@
+/*This is a function problem.You only need to complete the function given below*/
+/*Complete the function below
+Node is as follows:
+class Node{
+	int data;
+	Node left,right;
+	Node(int d){
+		data=d;
+		left=right=null;
+	}
+}
+*/
+class GfG
+{
+	public boolean isIsomorphic(Node root1,Node root2)
+       {
+         //add code here.
+         Boolean b1;
+         Boolean b2;
+         Boolean b3;
+         Boolean b4;
+         if(root1 == null && root2 == null)
+         return true;
+         else if(root1 != null && root2 == null)
+         return false;
+         else if(root1 == null && root2 != null)
+         return false;
+         else
+         {
+              b1 = isIsomorphic(root1.left,root2.left);
+              b2 = isIsomorphic(root1.right,root2.right);
+              b3 = isIsomorphic(root1.left,root2.right);
+              b4 = isIsomorphic(root1.right,root2.left);
+         }
+         if((b1 && b2 ) || (b3 && b3))
+         {
+              if(root1.data == root2.data)
+              return true;
+             
+         }
+         return false;
+         
+	}
+}
