@@ -1,0 +1,39 @@
+/*This is a function problem.You only need to complete the function given below*/
+/*complete the given function*/
+/* class Node{
+    int data;
+    Node left,right;
+    Node(int d)
+    {
+        data=d;
+        left=null;
+        right=null;
+    }
+}*/
+class Tree {
+    public static boolean isSubtree(Node T, Node S) {
+        // add code here.
+        if(T == null && S == null)
+        return true;
+        else if(T == null && S!= null)
+        return false;
+        else if(S== null && T != null)
+        return false;
+        else if(T.data == S.data)
+        {
+            boolean leftr = isSubtree(T.left,S.left);
+            boolean rightr = isSubtree(T.right,S.right);
+            if(leftr == false || rightr == false)
+            return false;
+            else
+            return true;
+        }
+        
+        boolean l = isSubtree(T.left,S);
+        boolean r = isSubtree(T.right,S);
+        if(l == false && r == false)
+        return false;
+        return true;
+        
+    }
+}
