@@ -1,0 +1,78 @@
+/*This is a function problem.You only need to complete the function given below*/
+/*Complete the function below
+Node is as follows:
+class Node{
+	int data;
+	Node left, right;
+	Node(int d){
+		data=d;
+		left=right=null;
+	}
+}*/
+class GfG
+{
+	public static void merge(Node root1 , Node root2)
+    {
+        //add code here.
+        if(root1 == null && root2 == null)
+            return;
+           ArrayList<Node> arr1 = new ArrayList<>();
+           ArrayList<Node> arr2 = new ArrayList<>();
+          
+          merge1(root1,arr1);
+          merge2(root2,arr2);
+          int i = 0;
+          int j = 0;
+          while(i<arr1.size() && j<arr2.size())
+          {
+              if(arr1.get(i).data <= arr2.get(j).data)
+              {
+                  System.out.print(arr1.get(i).data+" ");
+                  i++;
+              }
+              
+              else if(arr1.get(i).data > arr2.get(j).data)
+              {
+                  System.out.print(arr2.get(j).data+" ");
+                  j++;
+              }
+          }
+          if(i != arr1.size())
+          {
+              while(i != arr1.size())
+              {
+                  System.out.print(arr1.get(i).data+" ");
+                  i++;
+              }
+          }
+          else if(j != arr2.size())
+          {
+              while(j != arr2.size())
+              {
+                  System.out.print(arr2.get(j).data+" ");
+                  j++;
+              }
+          }
+         
+    }
+    
+   static void merge1(Node root,ArrayList<Node> arr)
+    {
+        if(root == null)
+        return;
+        
+        merge1( root.left,arr);
+        arr.add(root);
+        merge1( root.right,arr);
+    }
+    
+    static void merge2(Node root,ArrayList<Node> arr)
+    {
+        if(root == null)
+        return;
+        
+        merge2( root.left,arr);
+        arr.add(root);
+        merge2( root.right,arr);
+    }
+}
