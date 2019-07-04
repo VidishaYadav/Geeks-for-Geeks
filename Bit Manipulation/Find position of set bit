@@ -1,0 +1,37 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    for(int a=0;a<n1;a++)
+	    {
+	        int n=sc.nextInt();
+	        if(n == 0)
+	        {
+	        System.out.println("-1");
+	       continue;
+	        }
+	        if(n>0 && (n&(n-1)) != 0)
+	        {	        
+	        System.out.println("-1");
+	        continue;
+	        }
+	        int count =0;
+	        while(n != 0)
+	        {
+	            n=n >> 1;
+	            count++;
+	            if(n == 0)
+	            {
+	            System.out.println(count);
+	            continue;
+	            }
+	        }
+	    }
+	}
+}
