@@ -1,0 +1,21 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    for(int a=0;a<n1;a++)
+	    {
+	        long n = sc.nextLong();
+	        if((n&(n-1))==0 && n != 0)
+	        System.out.println("YES");
+	        else
+	        System.out.println("NO");
+	    }
+	}
+}
