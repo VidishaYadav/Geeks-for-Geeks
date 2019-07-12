@@ -1,0 +1,79 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+		int t =sc.nextInt();
+		for(int a =0;a<t;a++)
+		{
+		    int m = sc.nextInt();
+		    int n = sc.nextInt();
+		    int arr[][] = new int[m][n];
+		    for(int i=0;i<m;i++)
+            {
+                for(int j=0;j<n;j++)
+                {
+                    arr[i][j] = sc.nextInt();
+                }
+            }
+            Queue<Integer> q1 = new LinkedList<>();
+            Queue<Integer> q2 = new LinkedList<>();
+             for(int i=0;i<m;i++)
+            {
+                for(int j=0;j<n;j++)
+                {
+                    if(arr[i][j] == 2)
+                    {
+                        q1.add(i);
+                        q2.add(j);
+                    }
+                }
+            }
+            int dir[][] = {{1,0},{0,1},{-1,0},{0,-1}};
+            int count = -1;
+            while(!q1.isEmpty())
+            {
+                int num = q1.size();
+                while(num != 0 && !q1.isEmpty())
+                {
+                int t1 = q1.remove();
+                int t2 = q2.remove();
+                for(int i=0;i<4;i++)
+                {
+                    int newi = t1+dir[i][0];
+                    int newj = t2+dir[i][1];
+                    if(isvalid(newi,newj,m,n) == true && arr[newi][newj] == 1)
+                    {
+                        arr[newi][newj] = 2;
+                        q1.add(newi);
+                        q2.add(newj);
+                    }
+                }
+                num--;
+                }
+                count++;
+            }
+            for(int  i=0;i<m;i++)
+            {
+                for(int j=0;j<n;j++)
+                {
+                    if(arr[i][j] == 1)
+                        count  = -1;
+                }
+            }
+            System.out.println(count);
+	}
+	}
+	
+    public static boolean isvalid(int i,int j,int r,int c)
+	{
+	    if(i >= 0 && i <r && j >= 0 && j<c)
+	    return true;
+	    return false;
+	}
+}
