@@ -1,0 +1,47 @@
+class Area
+{
+    static int count;
+    static int findAreaUtil(int n, int m, int g[][], boolean vis[][])
+    {   
+        if(n == 0 && m == 0)
+        return 0;
+        count =0;
+        int max = 0;
+        int dir[][] = {{1,0},{0,1},{-1,0},{0,-1},{1,-1},{-1,1},{-1,-1},{1,1}};
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<m;j++)
+            {
+                if((g[i][j] == 1) && (vis[i][j] == false) )
+                {
+                    helper(i,j,n,m,g,vis,dir);
+                }
+                if(count > max)
+                max = count;
+                count = 0;
+            }
+        }
+        return max;
+    }
+    
+    static void helper(int i,int j,int n,int m,int g[][],boolean vis[][],int dir[][])
+    {
+        
+        vis[i][j] = true;
+        count++;
+        for(int k=0;k<8;k++)
+        {
+            int newi = i+dir[k][0];
+            int newj = j+dir[k][1];
+            if((isvalid(newi,newj,n,m) == true) && (g[newi][newj] == 1) && (vis[newi][newj] == false))
+                helper(newi,newj,n,m,g,vis,dir);
+        }
+    }
+            
+    static boolean isvalid(int i,int j,int r,int c)
+    {
+        if(i >= 0 && i<r && j >= 0 && j<c)
+        return true;
+        return false;
+    }
+}
