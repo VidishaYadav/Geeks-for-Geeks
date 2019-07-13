@@ -1,0 +1,44 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+	Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    for(int a=0;a<n1;a++)
+	    {
+	        int n=sc.nextInt();
+	        int arr[]=new int[n];
+	        for(int i=0;i<n;i++)
+	            arr[i]=sc.nextInt();
+	        int sum = sc.nextInt();
+	        int graph[][] = new int[n][sum+1];
+	        for(int i=0;i<n;i++)
+	        {
+	            graph[i][0]=1;
+	        }
+	        for(int i=1;i<sum+1;i++)
+	        {
+	            if(arr[0] == i)
+	            graph[0][i] = 1;
+	            else 
+	            graph[0][i] = 0;   
+	        }
+	        for(int i=1;i<n;i++)
+	        {
+	            for(int j=1;j<=sum;j++)
+	            {
+	                graph[i][j]=graph[i-1][j];
+	                if(j-arr[i] >= 0)
+	                graph[i][j]+=graph[i-1][j-arr[i]];
+	            }
+	        }
+	       
+	            System.out.println(graph[n-1][sum]);
+	       
+	    }
+	}
+}
