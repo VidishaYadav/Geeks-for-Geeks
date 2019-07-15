@@ -1,0 +1,58 @@
+/*This is a function problem.You only need to complete the function given below*/
+//User function Template for Java
+class Islands
+{
+    
+    // Function to find the number of island in the given list
+    // N, M: size of list row and column respectively
+    static int findIslands(ArrayList<ArrayList<Integer>> list, int N, int M)
+    {
+        
+        // Your code here
+        int dir[][]={{1,0},{1,1},{0,1},{-1,-1},{-1,1},{1,-1},{0,-1},{-1,0}};
+        boolean vis[][] = new boolean[N][M];
+        for(int i=0;i<N;i++)
+        {
+            for(int j=0;j<M;j++)
+            {
+            vis[i][j] = false;
+            }
+        }
+        int count =0;
+         for(int i=0;i<N;i++)
+        {
+            for(int j=0;j<M;j++)
+            {
+                if(vis[i][j] == false && list.get(i).get(j) == 1)
+                {
+                    if(helper(list,N,M,dir,vis,i,j) == true)
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    
+    static boolean helper(ArrayList<ArrayList<Integer>> list, int n,int m,int dir[][],boolean vis[][],int i,int j)
+    {
+       vis[i][j] = true;
+       boolean ans=true;
+                    for(int k=0;k<8;k++)
+                    {
+                    int newi = i+dir[k][0];
+                    int newj = j+dir[k][1];
+                    if(isvalid(newi,newj,n,m) == true && list.get(newi).get(newj) == 1 && vis[newi][newj] == false)
+                    {
+                        ans= helper(list,n,m,dir,vis,newi,newj);
+                    }
+                    }
+               return ans;
+    }
+    
+    static boolean isvalid(int i,int j,int r,int c)
+    {
+        if(i >= 0 && i<r && j>=0 && j<c)
+        return true;
+        return false;
+    }
+}
