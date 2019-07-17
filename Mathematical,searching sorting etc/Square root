@@ -1,0 +1,21 @@
+/*This is a function problem.You only need to complete the function given below*/
+/*You are required to complete
+this function*/
+// Function to find square root
+// x: element to find square root
+class SquareRoot
+{
+     long floorSqrt(long x)
+	 {
+		// Your code here
+ long i = 2;
+while(i * i < x){
+i++;
+}
+if(i * i > x){
+return i-1;
+
+}
+return i;
+	 }
+}
