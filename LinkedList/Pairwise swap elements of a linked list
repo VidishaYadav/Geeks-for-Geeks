@@ -1,0 +1,33 @@
+/*This is a function problem.You only need to complete the function given below*/
+/*node class of the linked list
+class Node
+{
+    int data;
+    Node next;
+    Node(int key)
+    {
+        data = key;
+        next = null;
+    }
+}*/
+// complete the below function
+class GfG
+{
+    public static void pairwiseSwap(Node node)
+    {
+        
+       // add your code here
+       Node temp = node;
+       while(temp != null && temp.next != null)
+       {
+           int v = temp.next.data;
+           temp.next.data = temp.data;
+           temp.data = v;
+           temp = temp.next.next;
+       }
+       
+       
+    }
+    
+   
+}
