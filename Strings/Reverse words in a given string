@@ -1,0 +1,14 @@
+/*This is a function problem.You only need to complete the function given below*/
+class Reverse {
+    public static void reverseWords(String sd) {
+        // Your code here
+        String s[] = sd.split("[.]");
+        for(int i=s.length-1;i>=0;i--)
+        {
+            if(i == 0)
+            System.out.print(s[i]);
+            else
+            System.out.print(s[i]+".");
+        }
+    }
+}
