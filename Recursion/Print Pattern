@@ -1,0 +1,30 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+		int n1 = sc.nextInt();
+		for(int i=0;i<n1;i++)
+		{
+		    int num = sc.nextInt();
+		    recure(num);
+		    System.out.println();
+		}
+		
+	}
+	
+	public static void recure(int n){
+    if(n>0){
+    System.out.print(n+" ");
+    recure(n-5);
+    System.out.print(n+" ");
+    }
+    else
+    System.out.print(n+" ");
+    }
+}
