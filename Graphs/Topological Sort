@@ -28,11 +28,7 @@ class TopologicalSort
     static void helper(boolean vis[],ArrayList<ArrayList<Integer>> list,Stack<Integer> s,int i)
     {
         vis[i] = true;
-        if(list.get(i).size() == 0)
-        {
-        s.push(i);
-        return;
-        }
+       
         for(int j=0;j<list.get(i).size();j++)
         {
             if(vis[list.get(i).get(j)] == false)
