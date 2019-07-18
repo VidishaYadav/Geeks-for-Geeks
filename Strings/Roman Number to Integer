@@ -1,0 +1,60 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    for(int a=0;a<n1;a++)
+	    {
+	        String s = sc.next();
+	        int n=s.length();
+	        
+	        
+	       
+	        int result =0;
+	        for(int i=0;i<n;i++)
+	        {
+	            if(i+1 < n)
+	            {
+	            if(value(s.charAt(i)) >= value(s.charAt(i+1)))
+	                result = result + value(s.charAt(i));
+	            
+	            if(value(s.charAt(i)) < value(s.charAt(i+1)))
+	            {
+	                result = result + value(s.charAt(i+1)) - value(s.charAt(i));
+	                i++;
+	            }
+	            }
+	            else
+	            result = result + value(s.charAt(i));
+	        }
+	        System.out.println(result);
+	    }
+	}
+	
+	public static int value(Character v)
+	{
+	    if(v == 'I')
+	    return 1;
+	    if(v == 'V')
+	    return 5;
+	    if(v == 'X')
+	    return 10;
+	    if(v == 'L')
+	    return 50;
+	    if(v == 'C')
+	    return 100;
+	    if(v == 'D')
+	    return 500;
+	    if(v == 'M')
+	    return 1000;
+	    
+	    return -1;
+	}
+
+}
