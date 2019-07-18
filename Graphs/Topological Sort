@@ -1,0 +1,43 @@
+class TopologicalSort
+{
+    static int[] topoSort(ArrayList<ArrayList<Integer>> list, int N)
+    {
+       // add your code here
+       Stack<Integer> s = new Stack<>();
+       boolean vis[] = new boolean[N];
+       for(int i=0;i<N;i++)
+       vis[i] = false;
+       for(int i=0;i<N;i++)
+       {
+          if(vis[i] == false)
+               {
+                   helper(vis,list,s,i);
+               }
+        }
+        int arr[] = new int[N];
+        int i=N-1;
+           while(!s.isEmpty())
+           {
+               arr[i] = s.pop();
+               i--;
+           }
+          
+           return arr;
+       }
+    
+    static void helper(boolean vis[],ArrayList<ArrayList<Integer>> list,Stack<Integer> s,int i)
+    {
+        vis[i] = true;
+        if(list.get(i).size() == 0)
+        {
+        s.push(i);
+        return;
+        }
+        for(int j=0;j<list.get(i).size();j++)
+        {
+            if(vis[list.get(i).get(j)] == false)
+            helper(vis,list,s,list.get(i).get(j));
+        }
+         s.push(i);
+    }
+}
