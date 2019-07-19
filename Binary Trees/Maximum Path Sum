@@ -1,0 +1,41 @@
+class Pair<T,V>
+{
+    T max;
+    V val;
+}
+class GfG
+{
+    
+    public static int maxPathSum(Node root)
+    {
+        // your code here
+        Pair<Integer,Integer> ans = new Pair<>();
+        ans = helper(root);
+        return Math.max(ans.max,ans.val);
+    }
+    
+    public static Pair<Integer,Integer> helper(Node root)
+    {
+        Pair<Integer,Integer> ans = new Pair<>();
+        if(root == null)
+        {
+            ans.max = 0;
+            ans.val = 0;
+            return ans;
+        }
+        if(root.left == null && root.right == null)
+        {
+        ans.max = root.data;
+        ans.val = root.data;
+        return ans;
+        }
+        
+        Pair<Integer,Integer> l = helper(root.left);
+        Pair<Integer,Integer> r = helper(root.right);
+        
+        ans.max = Math.max(Math.max(l.max,r.max),l.val+r.val+root.data);
+        ans.val = root.data + Math.max(l.val,r.val);
+        return ans;
+    }
+}
+
