@@ -1,0 +1,39 @@
+/*package whatever //do not write package name here */
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    for(int a=0;a<n1;a++)
+	    {
+	        int n=sc.nextInt();
+	        String s = "";
+	        while(n > 0)
+	        {
+	            int rem = n%26;
+	            if(rem == 0)
+	            {
+	                s = s + 'Z';  
+	                n= (n/26)-1;
+	            }
+	            else
+	            {
+	               // int c = rem - 1;
+	              s = s + ((char)(rem-1 +'A'));
+	              n=n/26;
+	            }
+	        }
+	        String s1 = "";
+	        for(int i=s.length()-1;i>=0;i--)
+	        {
+	            s1 = s1 + s.charAt(i);  
+	        }
+	        System.out.println(s1);
+	    }
+	}
+}
