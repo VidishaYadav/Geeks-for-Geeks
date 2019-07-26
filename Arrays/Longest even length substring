@@ -1,0 +1,39 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    for(int a=0;a<n1;a++)
+	    {
+	        String s = sc.next();
+	        int temp=0;
+	        int ans = temp;
+	        for(int i=0;i<s.length()-1;i++)
+	        {
+	            int suml = 0;
+	            int sumr = 0;
+	            int l = i;
+	            int r = i+1;
+	            while(l >= 0 && r < s.length())
+	            {
+	                suml = suml + Integer.parseInt(String.valueOf(s.charAt(l)));
+	                sumr = sumr + Integer.parseInt(String.valueOf(s.charAt(r)));
+	                if(suml == sumr)
+	                {
+	                    temp = r-l+1;
+	                    if(ans < temp)
+	                    ans = temp;
+	                }
+	                r++;
+	                l--;
+	            }
+	        }
+	         System.out.println(ans);
+	    }
+	}
+}
