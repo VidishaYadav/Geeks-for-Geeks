@@ -1,0 +1,52 @@
+/*This is a function problem.You only need to complete the function given below*/
+//User function Template for Java
+/*
+ArrayList<ArrayList<Integer>> list: arraylist of arraylist which represents graph
+src: it represents source vertex
+V: number of vertex
+*/
+class Implementation
+{
+    static void dijkstra(ArrayList<ArrayList<Integer>> list, int src, int V)
+    {
+        // add your code 
+        int dis[] = new int[V];
+        boolean vis[] = new boolean[V];
+        for(int i=0;i<V;i++)
+        {
+            dis[i] = Integer.MAX_VALUE;
+            vis[i] = false;
+        }
+        dis[src] = 0;
+        for(int count=0;count<V-1;count++)
+        {
+        int u = mindistance(dis,vis);
+        vis[u] = true;
+        for(int v=0;v<V;v++)
+        {
+            if(list.get(u).get(v) != 0 && (dis[u]+list.get(u).get(v)<dis[v]))
+            dis[v] = dis[u]+list.get(u).get(v);
+        }
+        }
+        for(int i=0;i<V;i++)
+        {
+            System.out.print(dis[i]+" ");
+        }
+  
+    }
+    
+    static int mindistance(int dis[],boolean vis[])
+    {
+        int mind = Integer.MAX_VALUE;
+        int minv = -1;
+        for(int i=0;i<dis.length;i++)
+        {
+            if((dis[i] < mind) && (vis[i] == false))
+            {
+                mind = dis[i];
+                minv = i;
+            }
+        }
+        return minv;
+    }
+}
