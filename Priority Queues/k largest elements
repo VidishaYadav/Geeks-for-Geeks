@@ -1,0 +1,40 @@
+
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+
+class GFG {
+	public static void main (String[] args) {
+		//code
+		Scanner sc = new Scanner(System.in);
+	    int n1 = sc.nextInt();
+	    for(int a=0;a<n1;a++)
+	    {
+	        int n=sc.nextInt();
+	        int k = sc.nextInt();
+	        int num[]=new int[n];
+	        for(int i=0;i<n;i++)
+	            num[i]=sc.nextInt();
+	        PriorityQueue<Integer> pq = new PriorityQueue<>();
+	        for(int i=0;i<k;i++)
+	        {
+	            pq.add(num[i]);
+	        }
+	        for(int j=k;j<n;j++)
+	        {
+	            if(pq.element() < num[j])
+	            {
+	                pq.poll();
+	                pq.add(num[j]);
+	            }
+	        }
+	        int y = pq.size();
+	        int arr[] = new int[y];
+	        for(int i=0;i<y;i++)
+	            arr[i]=pq.poll();
+	        for(int i=y-1;i>=0;i--)
+	            System.out.print(arr[i]+" ");
+	    System.out.println();
+	}
+	}
+}
