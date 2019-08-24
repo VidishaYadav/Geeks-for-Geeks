@@ -12,39 +12,31 @@ class GFG {
 		for(int a=0;a<n1;a++)
 		{
 		    int n = sc.nextInt();
-		    int k = sc.nextInt();
-		    if(n == 0)
+		    if(n == 0 || n == 1)
 		    System.out.println(0);
 		    else
 		    {
-		    int arr[] = new int[n];
-		    for(int i=0;i<n;i++)
-		    {
-		        arr[i] = sc.nextInt();
+		        int arr[] = new int[n];
+		        for(int i=0;i<n;i++)
+		        {
+		            arr[i] = sc.nextInt();
+		        }
+		        int min = arr[0];
+		        int maxdiff = arr[1]-arr[0];
+		        for(int i=1;i<n;i++)
+		        {
+		            if(arr[i] < min)
+		            {
+		                min = arr[i];
+		            }
+		            if((arr[i]-min > maxdiff) && (arr[i]-min != 0))
+		            {
+		                maxdiff = arr[i]-min;
+		            }
+		        }
+		       System.out.println(maxdiff); 
 		    }
-		    if(n == 1)
-		    System.out.println(arr[0]);
-		    else
-		    {
-		        int ans[]= new int[n-k+1];
-		        int i=0;
-		    int j=0;
-		    for(int k=0;k<s;k++)
-		    {
-		        sum+=arr[k];
-		        j++;
-		    }
-		    while(j != arr.length-1)
-		    {
-		        sum=sum-arr[i];
-		        i++;
-		        j++;
-		        sum=sum+arr[j];
-		       System.out.print(sum+" ");
-		    }
-		    }
-		    }
-		    System.out.println();
+		}
+
 	}
-}
 }
